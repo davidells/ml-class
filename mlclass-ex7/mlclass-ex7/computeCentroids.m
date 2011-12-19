@@ -27,10 +27,17 @@ centroids = zeros(K, n);
 %
 
 
+assigned_sums = zeros(K,n);
+num_assigned = zeros(K,1);
+for i = 1:m
+  k = idx(i);
+  assigned_sums(k,:) = assigned_sums(k,:) + X(i,:);
+  num_assigned(k) = num_assigned(k) + 1;
+end
 
-
-
-
+for k = 1:K
+  centroids(k,:) = (1/num_assigned(k)) .* assigned_sums(k,:);
+end
 
 
 % =============================================================

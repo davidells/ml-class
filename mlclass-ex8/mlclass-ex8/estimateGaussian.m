@@ -22,11 +22,14 @@ sigma2 = zeros(n, 1);
 %
 
 
+mu = (1/m) .* sum(X);
 
+mu_matrix = zeros(m, n);
+for i = 1:m
+  mu_matrix(i,:) = mu;
+end
 
-
-
-
+sigma2 = (1/m) .* sum((X - mu_matrix).^2);
 
 
 

@@ -31,6 +31,7 @@ X = [ones(m, 1) X];
 %       
 
 
+[vals,p] = max(X * all_theta', [], 2);
 
 
 

@@ -20,15 +20,18 @@ grad = zeros(size(theta));
 %
 
 
+h = X * theta;
+h_err = h - y;
+unreg_cost = (1/(2*m)) * sum(h_err .^ 2);
+reg_term = (lambda/(2*m)) .* sum(theta(2:end,:) .^ 2);
+
+J = unreg_cost + reg_term;
 
 
+theta_copy = theta;
+theta_copy(1) = 0;
 
-
-
-
-
-
-
+grad = (1/m) * ((h_err' * X) + (lambda*theta_copy'));
 
 % =========================================================================
 

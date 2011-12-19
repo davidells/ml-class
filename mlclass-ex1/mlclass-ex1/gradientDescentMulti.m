@@ -18,13 +18,16 @@ for iter = 1:num_iters
     %
 
 
+  hypothesis = X * theta;
+  diff = hypothesis - y;
 
-
-
-
-
-
-
+  feature_count = size(X,2);
+  term = zeros(m, feature_count);
+  for j = 1:feature_count
+    term(:,j) = diff .* X(:,j);
+  endfor
+    
+  theta = theta - (alpha * (1/m) * transpose(sum(term)));
 
 
     % ============================================================

@@ -21,9 +21,19 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
+for i = 1:size(X,1)
+  min_err = 0;
+  first = true;
+  for j = 1:K
+    diff = X(i,:) - centroids(j,:);
+    err_sq = diff * diff';
+    if first == true || err_sq < min_err;
+      min_err = err_sq;
+      idx(i) = j;
+    end
+    first = false;
+  end
+end
 
 
 

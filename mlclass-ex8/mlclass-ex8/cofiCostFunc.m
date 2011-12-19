@@ -41,17 +41,17 @@ Theta_grad = zeros(size(Theta));
 %
 
 
+term1 = Theta * X';
+term2 = term1' - Y;
+cost_matrix = (1/2) * (term2 .^ 2);
+reg_term1 = (lambda/2) * sum(sum(Theta .^ 2));
+reg_term2 = (lambda/2) * sum(sum(X .^ 2));
+J = sum(sum(cost_matrix .* R)) + reg_term1 + reg_term2;
 
-
-
-
-
-
-
-
-
-
-
+%size(X)
+%size(Theta)
+X_grad = ((term2 .* R) * Theta) + (lambda * X);
+Theta_grad = ((term2 .* R)' * X) + (lambda * Theta);
 
 
 
